@@ -28,26 +28,26 @@ def create_virtual_env(name: str, rootProject: str, rootApi: str):
     """.format(name, rootProject, rootApi))
 
 
-CDIR = path.basename(path.dirname(path.realpath(__file__)))
+CDIR = path.dirname(path.realpath(__file__))
 if '-d' in argv:  # si debe eliminar la aplicacion
     napp = secure_filename(argv[2]).lower().replace('_api', '') + '-project'
-    if input('are you sure you want to delete the %s (Y/N): ' % napp).lower() == 'y':
+    if input('💩 Are you sure you want to delete the %s (Y/N): ' % napp).lower() == 'y':
         shutil.rmtree(napp)
     exit()
 elif len(argv) == 2:
     napp = argv[1]  # nombre de la aplicacion
-    acode = input('app code: ')
+    acode = input('app code 👉: ')
     if napp:
         napp = secure_filename(napp).lower().replace('_api', '')
         rootProject = napp + '-project'  # carpeta de proyecto
         rootPath = path.join(rootProject, napp + '_api')  # carpeta del api
         # crea carpetas
         for dname in ('', 'modules', 'resources', '__temp__'):
-            print("creating > " + dname)
+            print("🚩 creating > " + (dname or rootPath))
             makedirs(path.join(rootPath, dname))
         DRESOURCES = path.join(CDIR, 'resources')
         for name in listdir(DRESOURCES):
-            print("creating > " + name)
+            print("🚩 creating > " + name)
             npath = path.join(DRESOURCES, name)
             if path.isdir(npath):  # si es directorio lo copia todo
                 shutil.copytree(npath, path.join(rootPath, name), dirs_exist_ok=True)
@@ -61,7 +61,7 @@ elif len(argv) == 2:
                 else:
                     shutil.copyfile(npath, path.join(rootPath, name))
         create_virtual_env(napp, rootProject, rootPath)  # crea entorno e instala dependencias
-        print("happy coding 😎")
+        print("\n\nhappy coding 😎🤟\n\n")
 else:
-    print("you need to specify the api name")
+    print("you need to specify the api name 🤬")
     exit()

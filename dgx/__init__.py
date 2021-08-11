@@ -1,1 +1,3 @@
-import run
+from . import run
+
+run.__file__
