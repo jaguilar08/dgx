@@ -1,12 +1,17 @@
 from distutils.core import setup
+
+readme = open('./README.md', 'r')
+
 setup(
     name='dgx',
     packages=['dgx'],
-    version='0.1.1',
+    version='0.1.4',
     license='MIT',
     description='Dealergeek API',
+    long_description=readme.read(),
+    long_description_content_type='text/markdown',
     author='Jeff Aguilar',
-    author_email='jaguilar@dealergeek.com',
+    author_email='jeff.aguilar.06@gmail.com',
     url='https://github.com/jaguilar08/dgx',
     download_url='https://github.com/jaguilar08/dgx/archive/refs/tags/0.1.tar.gz',
     keywords=['DEALERGEEK', 'API'],
