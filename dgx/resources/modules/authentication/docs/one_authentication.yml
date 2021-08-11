@@ -1,0 +1,105 @@
+Autentencacion con la suite
+---
+tags:
+  - Auth
+definitions:
+  CredentialNotValid:
+      required:
+        - massage
+      properties:
+          massage:
+            description: Mensaje de credenciales no validas
+            type: string
+            default: credential not valid
+  Unauthorized:
+      required:
+        - massage
+      properties:
+          massage:
+            description: Usuario no tiene permiso para la accion
+            type: string
+            default: Unauthorized access
+  ErrorInternal:
+    required:
+      - message
+    properties:
+      message:
+        description: Error interno
+        type: string
+        default: Internal error
+  DUserToken:
+    properties:
+      d_user:
+        name: d_user
+        description: Expone todas las propiedades basicas del usuario
+        properties:
+          dealership_default_id:
+            description: Identificador del dealership por defecto
+            type: number
+            default: 0
+            required: true
+          user_application_id:
+            description: Identificador de la aplicacion que esta utilizando
+            type: number
+            default: 1
+            required: true
+          email:
+            description: Correo electronico
+            type: string
+            example: jaguilar@dealergeek.com
+            required: true
+          name:
+            description: Nombre completo del usuario
+            type: string
+            example: jeff aguilar
+            required: true
+          username:
+            description: Nombre de usuario se usa para loguarse en la aplicacion
+            type: string
+            example: jeff
+            required: true
+          phone:
+            description: Numero de telefono
+            type: string
+            example: "50558569093"
+            required: true
+          carrier_id:
+            description: Identificador de carrier
+            type: number
+            example: 1
+          active:
+            description: Valor booleano que indica si el usuario esta activo
+            type: bool
+            example: True
+      security-token:
+        description: Token de seguridad valido para esta sesion
+        type: string
+        example: a7c8473c-72c3-4c70-a5ce-73805324190a
+      security_actions:
+        description: Arreglo de codigo de acciones que puede ejecutar el usuario en la aplicacion
+        type: array
+        example: [add_dealership, update_dealership]
+        items:
+          type: string
+parameters:
+  - name: security-token
+    in: headers
+    type: string
+    required: true
+responses:
+    200:
+        description: OK
+        schema:
+            $ref: '#/definitions/DUserToken'
+    401:
+      type: object
+      schema:
+        $ref: '#/definitions/CredentialNotValid'
+    403:
+      type: object
+      schema:
+        $ref: '#/definitions/Unauthorized'
+    500:
+      type: object
+      schema:
+        $ref: '#/definitions/ErrorInternal'

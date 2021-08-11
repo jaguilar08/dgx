@@ -1,0 +1,31 @@
+Valid token
+---
+tags:
+  - Authentication
+definitions:
+  Success:
+    properties:
+      message:
+        type: string
+        description: Message
+        example: Success
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Token de seguridad
+      in: header
+responses:
+  200:
+    description: Ok
+    type: object
+    schema:
+      $ref: '#/definitions/Success'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

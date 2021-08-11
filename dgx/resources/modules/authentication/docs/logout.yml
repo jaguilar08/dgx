@@ -1,0 +1,34 @@
+Logout
+---
+tags:
+  - Authentication
+definitions:
+  LogOutMessage:
+      properties:
+        message:
+          type: string
+          example: logout ok
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Token de seguridad
+      in: header
+responses:
+  200:
+    description: Ok
+    type: object
+    schema:
+      $ref: '#/definitions/LogOutMessage'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Anauthorized'
+  500:
+    type: object
+    schema:
+      $ref: '#/definitions/ErrorInternal'
