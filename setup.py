@@ -8,7 +8,7 @@ setup(
     author='Jeff Aguilar',
     author_email='jaguilar@dealergeek.com',
     url='https://github.com/jaguilar08/dgx',
-    download_url='https://github.com/jaguilar08/dgx/archive/refs/heads/master.zip',
+    download_url='https://github.com/jaguilar08/dgx/archive/refs/tags/0.1.tar.gz',
     keywords=['DEALERGEEK', 'API'],
     install_requires=[
         'werkzeug',
