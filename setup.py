@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name='dgx',
     packages=['dgx'],
-    version='0.1',
+    version='0.1.1',
     license='MIT',
     description='Dealergeek API',
     author='Jeff Aguilar',
