@@ -1,0 +1,3 @@
+[console_scripts]
+dgx = dgx.__main__:main
+

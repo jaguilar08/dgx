@@ -1,1 +1,3 @@
-werkzeug
+twine
+setuptools
+Werkzeug

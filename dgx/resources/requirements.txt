@@ -1,10 +1,12 @@
 Flask
 Flask-Cors
 flasgger
-Flask-SocketIO
-pymongo
+Flask-SocketIO==4.3.0
+pymongo==3.7.2
 eventlet
 requests
 Flask-JWT
 redis
 cerberus
+paramiko
+coverage

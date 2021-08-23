@@ -15,7 +15,7 @@ DIRECTORY_TEMP_PATH = path.join(ROOT_API, "__temp__")
 ENV = "DEV"
 
 # puerto
-PORT = 5026
+PORT = <<PORT>>
 
 # identificador de la aplicacion
 APPLICATION_CODE = '<<APPLICATION_CODE>>'
