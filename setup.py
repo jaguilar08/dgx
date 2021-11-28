@@ -9,7 +9,7 @@ setup(
     packages=find_packages(
         include=["dgx", "dgx.*"]
     ),
-    version='0.0.20',
+    version='0.0.21',
     license='MIT',
     description='Dealergeek API',
     long_description=long_desc,
