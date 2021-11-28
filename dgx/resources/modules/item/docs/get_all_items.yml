@@ -1,0 +1,25 @@
+List all test items
+---
+tags:
+  - Item
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Item'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

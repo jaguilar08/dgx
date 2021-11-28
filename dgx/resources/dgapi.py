@@ -1,24 +1,38 @@
-from requests import post as rpost, get as rget, Response
 from flask import request
-from const import DGAPI_SERVER
+from const import APPLICATION_CODE, DGAPI_SERVER
+import requests
 
 
-class DGAPI:
+class DGAPI(object):
+    """DGAPI connection"""
 
-    @classmethod
-    def get(endpoint: str, headers: dict = None) -> Response:
-        """
-        Realiza una peticion get al dg suite
-        """
-        nheaders = {**request.headers}
-        headers and nheaders.update(**headers)
-        return rget(DGAPI_SERVER + endpoint, headers=nheaders)
+    server_address = DGAPI_SERVER
 
     @classmethod
-    def post(endpoint: str, body: dict, headers: dict = None):
+    def send_request(self, type_method: str, endpoint: str, body: dict, headers: dict) -> requests.Response:
+        nheaders = {**dict(request.headers), "application-code": APPLICATION_CODE}
+        headers and nheaders.update(headers)
+        return requests.request(type_method, r"http://%s/%s" % (self.server_address, endpoint), json=body, headers=nheaders)
+
+    @classmethod
+    def post(self, method: str, body: dict, headers: dict = {}) -> requests.Response:
         """
-        Realiza una peticion post al dg suite
+        Send POST request
+
+        Parameters:
+            method (str): Endponint request
+            body (dict): Body
+            headers (dict): Headers
         """
-        nheaders = {**request.headers}
-        headers and nheaders.update(**headers)
-        return rpost(DGAPI_SERVER + endpoint, json=body, headers=nheaders)
+        return self.send_request('POST', method, body, headers)
+
+    @classmethod
+    def get(self, method: str, headers: dict = {}) -> requests.Response:
+        """
+        Send GET request
+
+        Parameters:
+            method (str): Endponint request
+            headers (dict): Headers
+        """
+        return self.send_request('GET', method, None, headers)

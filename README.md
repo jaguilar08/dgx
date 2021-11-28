@@ -4,7 +4,6 @@ Generar release
 
 ```
 python setup.py sdist
-
 ```
 
 Subir a Pip

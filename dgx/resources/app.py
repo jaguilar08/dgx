@@ -3,10 +3,12 @@ import eventlet
 eventlet.monkey_patch()
 
 # dependencias
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+from mongoCon import MongoCon
 from flask_socketio import SocketIO
 from const import ENV, MONGO_CONN
 from utils.helpers import CustomJSONEncoder
+from datetime import datetime
 import json
 
 
@@ -22,3 +24,19 @@ socketio = SocketIO(app, cors_allowed_origins="*", message_queue='redis://', asy
 @app.route('/', methods=['GET'])
 def index():
     return jsonify({"message": "Welcome to <<API_NAME>> API", "ENV": ENV, "db": MONGO_CONN['database']})
+
+
+@app.before_request
+def before_request_func():
+    with MongoCon() as cnx:
+        cnx.request_log.insert({
+            "datetime": datetime.now(),
+            "headers": dict(request.headers),
+            "method": request.method,
+            "endpoint": request.path,
+            "body": request.json,
+            "remote_addr": request.remote_addr,
+            "browser": request.user_agent.browser,
+            "language": request.user_agent.language,
+            "platform": request.user_agent.platform
+        })

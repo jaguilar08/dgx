@@ -1,0 +1,24 @@
+Recover all items in recycle
+---
+tags:
+  - Recycle
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+responses:
+  200:
+    description: Ok
+    type: object
+    schema:
+      $ref: '#/definitions/Success'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

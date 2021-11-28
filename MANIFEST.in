@@ -1,0 +1,4 @@
+README
+setup.py
+recursive-include dgx *
+global-exclude __pycache__/*

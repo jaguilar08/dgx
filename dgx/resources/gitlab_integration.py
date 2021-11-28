@@ -10,7 +10,7 @@ with SSHClient() as ssh:
         command = 'pwd;'
     else:
         command = """
-        cd "$(find /home/itadmin/applications -type d -name %s)";
+        cd "$(find applications/ -type d -name %s)";
         git checkout %s;
         pwd;
         git branch;

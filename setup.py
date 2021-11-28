@@ -1,15 +1,15 @@
 from setuptools import setup, find_packages
 
 long_desc = ""
-with open('./README.md', encoding="utf-8") as fl:
+with open('./README.md') as fl:
     long_desc = fl.read()
 
 setup(
     name='dgx',
     packages=find_packages(
-        include=['dgx', 'dgx.*']
+        include=["dgx", "dgx.*"]
     ),
-    version='0.0.19',
+    version='0.0.20',
     license='MIT',
     description='Dealergeek API',
     long_description=long_desc,

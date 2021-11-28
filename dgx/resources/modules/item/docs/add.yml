@@ -1,0 +1,48 @@
+Add test item
+---
+tags:
+  - Item
+definitions:
+  Item:
+    required:
+      - name
+    properties:
+      _id:
+        type: string
+        description: Identificator
+        example: 61a2b283b520d9e5fca8df2f
+      name:
+        type: string
+        description: Name of item
+        example: John Doe
+      events:
+          type: array
+          description: Events
+          items:
+            $ref: '#/definitions/Event'
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+    - name: body
+      required: true
+      type: object
+      in: body
+      schema:
+        $ref: '#/definitions/Item'
+responses:
+  200:
+    description: Ok
+    type: object
+    schema:
+      $ref: '#/definitions/Item'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

@@ -1,0 +1,48 @@
+List items in recycle
+---
+tags:
+  - Recycle
+definitions:
+  Recycle:
+    properties:
+      _id:
+        type: string
+        description: Identificator
+        example: 61a19925b520d9d20f79c655
+      type:
+        type: string
+        description: Type of item
+        example: item
+      delete_date:
+        type: string
+        description: date of elimination
+        example: "2021-11-26 20:34:13"
+      deleted_by:
+        type: string
+        description: Who deleted the record
+        example: System
+      display:
+        type: string
+        description: Display name
+        example: John Doe
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Recycle'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

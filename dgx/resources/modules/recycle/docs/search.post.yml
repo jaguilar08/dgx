@@ -1,0 +1,47 @@
+List items in recycle
+---
+tags:
+  - Recycle
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+    - name: body
+      required: true
+      type: object
+      in: body
+      schema:
+        properties:
+          search:
+            type: string
+            description: Value to search
+            example: "John Doe"
+          type:
+            type: string
+            description: Type of item
+            example: user
+          page:
+            type: number
+            description: Page number
+            example: 1
+          limit:
+            type: number
+            description: Limit of items by page
+            example: 25
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Recycle'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

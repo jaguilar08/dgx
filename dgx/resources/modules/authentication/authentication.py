@@ -13,7 +13,7 @@ auth = Blueprint('authentication', __name__)
 @auth.route('/one_authentication', methods=['GET'])
 @swag_from('./docs/one_authentication.yml')
 def one_authentication():
-    res = DGAPI.post("one_authentication", {"application_code": APPLICATION_CODE})
+    res = DGAPI.post("one_authentication", {"application_code": APPLICATION_CODE}, {"content-type": "application/json"})
     return make_response(res.text, res.status_code)
 
 

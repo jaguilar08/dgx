@@ -3,12 +3,16 @@ from flasgger import Swagger
 from const import MODE_DEBUG, PORT
 from app import app, socketio
 from modules.authentication.authentication import auth
+from modules.item.item_controller import ite
+from modules.recycle.recycle_controller import recycle
 
 
 CORS(app)
 
 # registra los demas modulos
 app.register_blueprint(auth)
+app.register_blueprint(ite)
+app.register_blueprint(recycle)
 
 
 # configuracion del swagger

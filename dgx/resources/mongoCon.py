@@ -3,8 +3,11 @@ from const import MONGO_CONN
 
 
 class MongoCon:
+    """
+    Connect to MongoDB
+    """
 
-    def __init__(self, conf=None):
+    def __init__(self, conf: dict = None):
         conf = conf or MONGO_CONN
         self.conf = conf
         self.cnx = MongoClient(conf['host'], conf['port'])
@@ -17,5 +20,5 @@ class MongoCon:
     def __enter__(self):
         return self.db()
 
-    def __exit__(self, type, value, tb):
+    def __exit__(self, _, __, ___):
         self.cnx.close()

@@ -1,3 +1,4 @@
+MANIFEST.in
 README.md
 setup.py
 dgx/__init__.py
@@ -23,6 +24,19 @@ dgx/resources/modules/authentication/authentication.py
 dgx/resources/modules/authentication/docs/is_authorized.yml
 dgx/resources/modules/authentication/docs/logout.yml
 dgx/resources/modules/authentication/docs/one_authentication.yml
+dgx/resources/modules/item/item_controller.py
+dgx/resources/modules/item/docs/add.yml
+dgx/resources/modules/item/docs/delete_by_id.yml
+dgx/resources/modules/item/docs/get_all_items.yml
+dgx/resources/modules/recycle/recycle_controller.py
+dgx/resources/modules/recycle/docs/delete_all.yml
+dgx/resources/modules/recycle/docs/delete_by_id.yml
+dgx/resources/modules/recycle/docs/get_by_id.yml
+dgx/resources/modules/recycle/docs/recover_all.yml
+dgx/resources/modules/recycle/docs/recover_by_id.yml
+dgx/resources/modules/recycle/docs/search.post.yml
+dgx/resources/modules/recycle/docs/search.yml
 dgx/resources/utils/decorators.py
 dgx/resources/utils/helpers.py
+dgx/resources/utils/recycle.py
 dgx/resources/utils/responses.py

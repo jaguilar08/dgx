@@ -1,0 +1,65 @@
+List items in recycle
+---
+tags:
+  - Recycle
+definitions:
+  Event:
+    properties:
+      event:
+        type: string
+        description: Name of event
+        example: created
+      user:
+        type: string
+        description: Username
+        example: John Doe
+      datetime:
+        type: string
+        description: Datetime of event
+        example: "2021-11-26 20:00:35"
+      msg:
+        type: string
+        description: Message
+        example: The user John Doe has created this registry.
+  RecycleItem:
+    allOf:
+      - $ref: '#/definitions/Recycle'
+      - properties:
+          events:
+            type: array
+            description: Events
+            items:
+              $ref: '#/definitions/Event'
+          item:
+            type: object
+            description: Original item deleted
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+    - name: body
+      required: true
+      type: object
+      in: body
+      schema:
+        properties:
+          _id:
+            type: string
+            description: Item Identificator
+            example: 61a2ac4eb520d9e3f8bacabf
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      $ref: '#/definitions/RecycleItem'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'
