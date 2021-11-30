@@ -79,21 +79,26 @@ def create_app(napp: str):
                         create_file(npath, path.join(rootPath, name), {'<<API_NAME>>': napp})
                     elif name.endswith('.pyc') is False:
                         shutil.copyfile(npath, path.join(rootPath, name))
+        # modulos opcionales
+        if input('Do you want add personnel module 👉: ').strip().lower() == "y":
+            add_optional("personnel", rootPath)
+        if input('Do you want add brand module 👉: ').strip().lower() == "y":
+            add_optional("brand", rootPath)
         create_virtual_env(napp, rootProject, rootPath)  # crea entorno e instala dependencias
         print("\n\nhappy coding 😎🤟\n\n")
     else:
         print("you need to specify the api name 🤬")
 
 
-def __validate_module():
+def __validate_module(rootProject: str):
     """
     Validaciones de existencia de modulo
     """
     CDIR = path.dirname(path.realpath(__file__))
-    rootProject = getcwd()
+    rootProject = rootProject or getcwd()
     rServerPath = path.join(rootProject, 'runServer.py')
     if path.exists(path.join(rootProject, 'modules')) is False or path.exists(rServerPath) is False:
-        raise Exception(path.basename(CDIR) + " is not a valid project")
+        raise Exception(path.basename(rootProject) + " is not a valid project")
     return CDIR, rootProject, rServerPath
 
 
@@ -149,12 +154,12 @@ def __add_module_to_run(module: str, rServerPath: str, mCPath: str):
         raise Exception("The module variable not found")
 
 
-def add_optional(module: str):
+def add_optional(module: str, rootProject: str):
     """
     Agrega modulo existente
     """
     if module:
-        CDIR, rootProject, rServerPath = __validate_module()
+        CDIR, rootProject, rServerPath = __validate_module(rootProject)
         mPath = path.join(CDIR, 'optional', module)
         if path.exists(mPath) is False:
             raise Exception("Module %s is not available" % module)
@@ -171,7 +176,7 @@ def create_module(module: str):
     """
     if module:
         module = module.strip().lower()
-        CDIR, rootProject, rServerPath = __validate_module()
+        CDIR, rootProject, rServerPath = __validate_module(None)
         mPath = path.join(rootProject, 'modules', module)
         mCPath = path.join(mPath, "%s_controller.py" % module)
         # crea directorio

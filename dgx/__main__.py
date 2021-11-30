@@ -43,7 +43,7 @@ def main():
     elif args.delete:
         delete_app(args.delete)
     elif args.add:
-        add_optional(args.add)
+        add_optional(args.add, None)
     elif args.create:
         create_module(args.create)
     else:
