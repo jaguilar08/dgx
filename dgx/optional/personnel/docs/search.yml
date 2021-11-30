@@ -1,0 +1,74 @@
+List all personnel
+---
+tags:
+  - Personnel
+definitions:
+  Personnel:
+    properties:
+      active:
+        type: bool
+        description: Personnel is active
+        example: true
+      alt_code:
+        type: string
+        description: Alternative code
+        example: "55623"
+      email:
+        type: string
+        description: Email
+        example: johnDoe.email.com
+      first_name:
+        type: string
+        description: First name
+        example: John
+      id:
+        type: number
+        description: Identificator
+        example: 1
+      name:
+        type: string
+        description: Full name
+        example: John Doe
+      phone:
+        type: string
+        description: Phone number
+        example: "7863781190"
+      role_name:
+        type: string
+        description: Role
+        example: Salesperson
+      surname:
+        type: string
+        description: Surname
+        example: Doe
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+    - name: body
+      required: true
+      type: object
+      in: body
+      schema:
+        properties:
+          search:
+            type: string
+            description: Value to search
+            example: John Doe
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Personnel'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

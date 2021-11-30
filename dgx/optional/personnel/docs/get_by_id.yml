@@ -1,0 +1,43 @@
+Get info by id
+---
+tags:
+  - Personnel
+definitions:
+  PersonnelInfo:
+    AllOf:
+      - $ref: '#/definitions/Personnel'
+      - properties:
+          carrier_id:
+            type: number
+            description: Carrier Identificator
+            example: 1
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+    - name: body
+      required: true
+      type: object
+      in: body
+      schema:
+        properties:
+          id:
+            type: number
+            description: Identificator
+            example: 1
+responses:
+  200:
+    description: Ok
+    type: object
+    schema:
+      $ref: '#/definitions/Success'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

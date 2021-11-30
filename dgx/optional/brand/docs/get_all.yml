@@ -1,0 +1,36 @@
+List of brands
+---
+tags:
+  - Brand
+definitions:
+  Brand:
+      properties:
+        id:
+          type: number
+          description: Brand Identificator
+          example: 1
+        name:
+          type: string
+          description: Nombre of brand
+          example: BMW
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Brand'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

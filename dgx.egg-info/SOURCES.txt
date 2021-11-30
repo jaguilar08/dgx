@@ -10,6 +10,17 @@ dgx.egg-info/dependency_links.txt
 dgx.egg-info/entry_points.txt
 dgx.egg-info/requires.txt
 dgx.egg-info/top_level.txt
+dgx/default/default_controller.py
+dgx/default/docs/search.yml
+dgx/optional/brand/brand_controller.py
+dgx/optional/brand/docs/get_all.yml
+dgx/optional/brand/docs/get_by_dealer.yml
+dgx/optional/brand/docs/search.yml
+dgx/optional/personnel/personnel_controller.py
+dgx/optional/personnel/docs/get_by_id.yml
+dgx/optional/personnel/docs/get_roles.yml
+dgx/optional/personnel/docs/search.yml
+dgx/optional/personnel/docs/update.yml
 dgx/resources/.gitignore
 dgx/resources/.gitlab-ci.yml
 dgx/resources/__init__.py

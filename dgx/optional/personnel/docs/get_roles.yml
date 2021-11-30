@@ -1,0 +1,36 @@
+List of roles
+---
+tags:
+  - Personnel
+definitions:
+  Role:
+      properties:
+        id:
+          type: number
+          description: Type Identificator
+          example: 1
+        name:
+          type: string
+          description: Nombre of type
+          example: Salesperson
+parameters:
+    - name: security-token
+      required: true
+      type: string
+      description: Security token
+      in: header
+responses:
+  200:
+    description: Ok
+    type: array
+    schema:
+      items:
+        $ref: '#/definitions/Role'
+  401:
+    type: object
+    schema:
+      $ref: '#/definitions/CredentialNotValid'
+  403:
+    type: object
+    schema:
+      $ref: '#/definitions/Unauthorized'

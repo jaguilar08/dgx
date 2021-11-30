@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: dgx
-Version: 0.0.20
+Version: 0.0.21
 Summary: Dealergeek API
 Home-page: https://github.com/jaguilar08/dgx
 Author: Jeff Aguilar
@@ -19,6 +19,22 @@ Description: # Generador de proyecto API para dealergeek
         
         ```
         twine upload dist/*
+        ```
+        
+        
+        ## Use
+        
+        ### create a new project
+        
+        ```
+        dgx -c python-test
+        ```
+        
+        
+        ### delete a project
+        
+        ```
+        dgx -d python-test
         ```
 Keywords: DEALERGEEK,API
 Platform: UNKNOWN
